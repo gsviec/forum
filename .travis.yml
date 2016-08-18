@@ -38,7 +38,7 @@ before_install:
   - travis_retry composer install --prefer-dist --no-interaction --ignore-platform-reqs
   - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b ${PHALCON_VERSION}
   - sh -e /etc/init.d/xvfb start
-  - wget -q http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar -O selenium.jar
+  - wget -q http://selenium-release.storage.googleapis.com/3.0-beta2/selenium-server-standalone-3.0.0-beta2.jar -O selenium.jar
   - java -jar selenium.jar -port 4444 >/dev/null 2>&1 &
 
 install:
