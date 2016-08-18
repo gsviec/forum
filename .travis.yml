@@ -66,4 +66,4 @@ addons:
     packages:
       - gdb
       - re2c
-  firefox: "44.0"
+  #firefox: "44.0"
