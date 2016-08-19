@@ -38,8 +38,8 @@ before_install:
   - travis_retry composer install --prefer-dist --no-interaction --ignore-platform-reqs
   - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b ${PHALCON_VERSION}
   - sh -e /etc/init.d/xvfb start
-  - wget -q http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar -O selenium.jar
-  - java -jar selenium.jar -port 4444 >/dev/null 2>&1 &
+  #- wget -q http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar -O selenium.jar
+  #- java -jar selenium.jar -port 4444 >/dev/null 2>&1 &
 
 install:
   - (cd cphalcon/build; bash install &>/dev/null)
@@ -60,18 +60,13 @@ script:
   - composer functional-test
   - echo "APP_ENV=development" > ./.env && ./bin/codecept run acceptance
 
-notifications:
-  email:
-    recipients:
-      - andres@phalconphp.com
-      - eduar@phalconphp.com
-      - nikos@phalconphp.com
-      - serghei@phalconphp.com
-    on_success: change
-    on_failure: always
+
 
 addons:
   apt:
     packages:
       - gdb
       - re2c
+  sauce_connect:
+    username: "duythien"
+    access_key: "e5ab3da8-2c20-43e9-9ac9-de81fdc61af3"
