@@ -2,7 +2,7 @@
 
 {{ flashSession.output() }}
 
-{%- set currentUser = session.get('identity'), moderator = session.get('identity-moderator') -%}
+{%- set currentUser = session.get('auth'), moderator = session.get('identity-moderator') -%}
 
 {% set tokenKey = security.getTokenKey() %}
 {% set token = security.getToken() %}
@@ -91,7 +91,7 @@
 
 		</ul>
 	{%- endif -%}
-
+	{{post.user.id}}
 	<div class="discussion">
 		<div class="row reply-block">
 			<div class="col-md-1 small" align="center">

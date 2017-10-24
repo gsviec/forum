@@ -146,6 +146,43 @@ $di->set(
     }
 );
 
+$di->set(
+    'db1',
+    function () use ($config) {
+
+        $connection = new DatabaseConnection($config->db1->toArray());
+
+        $debug = $config->application->debug;
+        if ($debug) {
+            $eventsManager = new EventsManager();
+
+            $logger = new FileLogger(APP_PATH . "/app/logs/db1.log");
+
+            //Listen all the database events
+            $eventsManager->attach(
+                'db1',
+                function ($event, $connection) use ($logger) {
+                    /** @var Phalcon\Events\Event $event */
+                    if ($event->getType() == 'beforeQuery') {
+                        /** @var DatabaseConnection $connection */
+                        $variables = $connection->getSQLVariables();
+                        if ($variables) {
+                            $logger->log($connection->getSQLStatement() . ' [' . join(',', $variables) . ']', \Phalcon\Logger::INFO);
+                        } else {
+                            $logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
+                        }
+                    }
+                }
+            );
+
+            //Assign the eventsManager to the db adapter instance
+            $connection->setEventsManager($eventsManager);
+        }
+
+        return $connection;
+    }
+);
+
 /**
  * Queue to deliver e-mails in real-time
  */
@@ -192,8 +229,10 @@ $di->set(
  */
 $di->set(
     'session',
-    function () {
-        $session = new SessionAdapter();
+    function () use ($config) {
+        $sessionAdapter = $config->session->adapter;
+        ini_set('session.cookie_domain', $config->session->domain);
+        $session        = new $sessionAdapter($config->session->options->toArray());
         $session->start();
         return $session;
     },

@@ -13,7 +13,7 @@
 namespace Phosphorum\Utils;
 
 use Phalcon\Mvc\User\Component;
-use Phanbook\Models\Users;
+use Phosphorum\Models\Users;
 use Phanbook\Models\RememberTokens;
 use Phanbook\Models\SuccessLogins;
 use Phanbook\Models\FailedLogins;

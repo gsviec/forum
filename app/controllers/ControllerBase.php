@@ -27,7 +27,10 @@ class ControllerBase extends \Phalcon\Mvc\Controller
             $this->view->setVar("threads", Posts::count());
             $this->view->setVar("last_threads", $last_threads);
             $this->view->setVar("users", Users::count());
-            $this->view->setVar("users_latest", $users->login);
+            $this->view->setVar("users_latest", $users->username);
             $this->view->actionName = $this->dispatcher->getActionName();
+    
     }
+
+
 }

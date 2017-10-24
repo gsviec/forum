@@ -578,7 +578,6 @@ class DiscussionsController extends ControllerBase
                  */
                 $post->number_views++;
                 if ($post->users_id != $usersId) {
-
                     $post->user->increaseKarma(Karma::VISIT_ON_MY_POST);
 
                     if ($usersId > 0) {

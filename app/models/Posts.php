@@ -239,14 +239,21 @@ class Posts extends Model
      */
     public function getRecentUsers()
     {
-
-        $users  = array($this->user->id => array($this->user->login, $this->user->gravatar_id));
+        $users  = []; //array($this->user->id => array($this->user->username, $this->user->email));
         foreach ($this->getReplies(['order' => 'created_at DESC', 'limit' => 3]) as $reply) {
-            if (!isset($users[$reply->user->id])) {
-                $users[$reply->user->id] = array($reply->user->login, $reply->user->gravatar_id);
-            }
+             $users[$reply->user->id] = array($reply->user->username,
+                 $this->getUrlAvatar($reply->user->email));
         }
         return $users;
+       
+    }
+    protected function getUrlAvatar($email, $s = 24, $d = 'identicon', $r = 'pg')
+    {
+
+        $url = 'https://www.gravatar.com/avatar/';
+        $url .= md5(strtolower(trim($email)));
+        $url .= "?s={$s}&d={$d}&r={$r}";
+        return $url;
     }
 
     /**
