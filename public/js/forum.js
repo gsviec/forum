@@ -432,11 +432,11 @@ var Forum = {
 
 	showSuggestedPosts: function()
 	{
-		$.ajax({
-			method: 'POST',
-			url: Forum._uri + 'show-related',
-			data: { 'id': $('#post-id').val() }
-		}).done(Forum.updateSuggestedPosts);
+		// $.ajax({
+		// 	method: 'POST',
+		// 	url: Forum._uri + 'show-related',
+		// 	data: { 'id': $('#post-id').val() }
+		// }).done(Forum.updateSuggestedPosts);
 	},
 
 	/**

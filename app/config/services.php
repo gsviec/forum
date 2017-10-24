@@ -350,6 +350,13 @@ $di->set(
 );
 
 
+$di->set(
+    'auth',
+    function () use ($di) {
+        return new \Phosphorum\Utils\Auth();
+    }
+);
+
 /**
  * Translation function
  *

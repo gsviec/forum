@@ -14,21 +14,7 @@
   +------------------------------------------------------------------------+
 */
 
-.navbar-reverse .navbar-nav>li>a {
-    font-size: 18px;
-}
 
-.navbar-reverse .navbar-nav>li>a.btn-default {
-    font-size: 12px;
-    padding: 5px;
-    margin: 5px;
-    margin-top: 10px;
-}
-
-h1 {
-    font-size: 30px;
-    margin-bottom: 15px;
-}
 
 .action-date {
     font-size: 11px;
