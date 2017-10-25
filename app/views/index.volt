@@ -54,6 +54,6 @@
 		{{ javascript_include("js/editor.js?v=" ~ version) }}
 		{{ javascript_include("js/forum.js?v=" ~ version) }}
 		{{ javascript_include("js/gs.js?v=" ~ version) }}
-		<script type="text/javascript">Forum.initializeView('/forum/');</script>
+		<script type="text/javascript">Forum.initializeView('/');</script>
 	</body>
 </html>
