@@ -229,6 +229,7 @@ class Users extends Model
 
     protected $petname;
 
+    public $gravatar_id;
     /**
      * Method to set the value of field id
      *
@@ -1291,7 +1292,7 @@ class Users extends Model
         return $this->getUrlAvatar($this->email, $width);
     }
 
-    protected function getUrlAvatar($email, $s = 32, $d = 'identicon', $r = 'pg')
+    public function getUrlAvatar($email, $s = 32, $d = 'identicon', $r = 'pg')
     {
 
         $url = 'https://www.gravatar.com/avatar/';

@@ -241,9 +241,17 @@ class Posts extends Model
     {
         $users  = []; //array($this->user->id => array($this->user->username, $this->user->email));
         foreach ($this->getReplies(['order' => 'created_at DESC', 'limit' => 3]) as $reply) {
-             $users[$reply->user->id] = array($reply->user->username,
+            if (isset($reply->user->id)) {
+               
+             
+            }
+
+             $users[] = array($reply->user->username,
                  $this->getUrlAvatar($reply->user->email));
+        
+        
         }
+        //d($users);
         return $users;
        
     }

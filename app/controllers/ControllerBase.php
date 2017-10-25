@@ -29,7 +29,20 @@ class ControllerBase extends \Phalcon\Mvc\Controller
             $this->view->setVar("users", Users::count());
             $this->view->setVar("users_latest", $users->username);
             $this->view->actionName = $this->dispatcher->getActionName();
-    
+            $this->view->name = 'Gsviec';
+
+
+            if ($this->session->get('auth')) {
+                $auth = $this->session->get('auth');
+                $this->session->set('identity', $auth['id']);
+                $this->session->set('identity-name', $auth['name']);
+                $this->session->set('identity-gravatar', $auth['email']);
+                //$this->session->set('identity-timezone', $user->timezone);
+                $this->session->set('identity-theme', $auth['theme']);
+                $this->session->set('identity-moderator', $auth['moderator']);
+
+            }
+            $this->view->redirect = urlencode('https://gsviec.com' . $this->router->getRewriteUri());
     }
 
 

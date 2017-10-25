@@ -12,7 +12,7 @@
 		{%- endif -%}
 
 		{%- if post is defined -%}
-		<link rel="author" href="https://github.com/{{ post.user.login }}">
+		<link rel="author" href="https://github.com/{{ post.user.username }}">
 		<link rel="publisher" href="http://{{ config.site.url }}/">
 		{%- endif -%}
 
@@ -37,6 +37,7 @@
 
 		{#- CSS resources from jsdelivr cannot be combined due to Bootstrap icons -#}
 		{{- stylesheet_link("//cdn.jsdelivr.net/bootstrap/3.1.1/css/bootstrap.min.css", false) -}}
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 		{{- stylesheet_link("//cdn.jsdelivr.net/prettify/0.1/prettify.css", false) -}}
 		{%- if theme == 'L' -%}
 		{{- stylesheet_link("css/theme-white.css?v=" ~ version, true) -}}
@@ -53,6 +54,6 @@
 		{{ javascript_include("js/editor.js?v=" ~ version) }}
 		{{ javascript_include("js/forum.js?v=" ~ version) }}
 		{{ javascript_include("js/gs.js?v=" ~ version) }}
-		<script type="text/javascript">Forum.initializeView('{{ url() }}');</script>
+		<script type="text/javascript">Forum.initializeView('/forum/');</script>
 	</body>
 </html>

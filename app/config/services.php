@@ -79,6 +79,8 @@ $di->set(
             return '$this->translate->_('.($string) . ')';
         });
 
+        $volt->getCompiler()->addExtension(new PhpFunctionExtension());
+
         return $volt;
     },
     true

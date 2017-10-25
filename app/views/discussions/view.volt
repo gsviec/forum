@@ -2,7 +2,7 @@
 
 {{ flashSession.output() }}
 
-{%- set currentUser = session.get('auth'), moderator = session.get('identity-moderator') -%}
+{%- set currentUser = session.get('identity'), moderator = session.get('identity-moderator') -%}
 
 {% set tokenKey = security.getTokenKey() %}
 {% set token = security.getToken() %}
@@ -91,12 +91,12 @@
 
 		</ul>
 	{%- endif -%}
-	{{post.user.id}}
+
 	<div class="discussion">
 		<div class="row reply-block">
 			<div class="col-md-1 small" align="center">
-				<img src="https://secure.gravatar.com/avatar/{{ post.user.gravatar_id }}?s=48&amp;r=pg&amp;d=identicon" class="img-rounded" width="48" height="48"><br>
-				<span>{{ link_to('user/' ~ post.user.id ~ '/' ~ post.user.login, post.user.name|e, 'class': 'user-moderator-' ~ post.user.moderator) }}</span><br>
+				<img src="{{getUrlAvatar(post.user.email)}}"class="img-rounded" width="48" height="48"><br>
+				<span>{{ link_to('user/' ~ post.user.id ~ '/' ~ post.user.username, post.user.name|e, 'class': 'user-moderator-' ~ post.user.moderator) }}</span><br>
 				<span class="karma">{{ post.user.getHumanKarma() }}</span>
 			</div>
 			<div class="col-md-11 post-body{% if (post.votes_up - post.votes_down) <= -3 %} post-negative-body{% endif %}">
@@ -153,8 +153,8 @@
 		{%- for reply in post.replies -%}
 			<div class="reply-block row{% if (reply.votes_up - reply.votes_down) <= -3 %} reply-negative{% endif %}{% if (reply.votes_up - reply.votes_down) >= 4 %} reply-positive{% endif %}{% if reply.accepted == 'Y' %} reply-accepted{% endif %}">
 				<div class="col-md-1 small" align="center">
-					<img src="https://secure.gravatar.com/avatar/{{ reply.user.gravatar_id }}?s=48&amp;r=pg&amp;d=identicon" class="img-rounded"><br>
-					<span>{{ link_to('user/' ~ reply.user.id ~ '/' ~ reply.user.login, reply.user.name|e, 'class': 'user-moderator-' ~ reply.user.moderator) }}</span><br>
+					<img src="{{getUrlAvatar(reply.user.email)}}" class="img-rounded"><br>
+					<span>{{ link_to('user/' ~ reply.user.id ~ '/' ~ reply.user.username, reply.user.name|e, 'class': 'user-moderator-' ~ reply.user.moderator) }}</span><br>
 					<span class="karma">{{ reply.user.getHumanKarma() }}</span>
 					{%- if reply.accepted == 'Y' -%}
 						<div class="accepted-reply">
@@ -169,7 +169,7 @@
 						{%- if inReplyTo -%}
 						<div class="in-reply-to">
 							<a href="#C{{ reply.in_reply_to_id }}"><span class="glyphicon glyphicon-chevron-up"></span> in reply to
-								<img src="https://secure.gravatar.com/avatar/{{ inReplyTo.user.gravatar_id }}?s=24&amp;r=pg&amp;d=identicon" class="img-rounded" width="24" height="24"> {{ inReplyTo.user.name }}</a>
+								<img src="{{getUrlAvatar(inReplyTo.user.email)}}" class="img-rounded" width="24" height="24"> {{ inReplyTo.user.name }}</a>
 						</div>
 						{%- endif -%}
 					{%- endif -%}
@@ -240,7 +240,7 @@
 				<div class="row">
 				{%- if currentUser -%}
 					<div class="col-md-1 small" align="center">
-						<img src="https://secure.gravatar.com/avatar/{{ session.get('identity-gravatar') }}?s=48&amp;r=pg&amp;d=identicon" class="img-rounded" width="48" height="48"><br>
+						<img src="{{ getUrlAvatar(session.get('identity-gravatar')) }}" class="img-rounded" width="48" height="48"><br>
 						<span>{{ link_to('', 'You') }}</span>
 					</div>
 					<div class="col-md-11">
@@ -274,7 +274,7 @@
 					<div class="col-md-1 small" align="center"></div>
 					<div class="col-md-11 login-comment">
 						<div class="pull-right">
-							{{- link_to('login/oauth/authorize', t('Log In to Comment'), 'class': 'btn btn-primary') -}}
+							{{- link_to('login?redirect=' ~ redirect, t('Log In to Comment'), 'class': 'btn btn-primary') -}}
 						</div>
 					</div>
 				{%- endif -%}

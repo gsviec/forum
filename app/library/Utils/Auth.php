@@ -459,7 +459,6 @@ class Auth extends Component
                 ]
             );
         };
-
         if (is_array($object)) {
             $this->session->set('auth', $object);
         }

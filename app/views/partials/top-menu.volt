@@ -21,7 +21,9 @@
                                     <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-search"></i></span>
                                     <input type="text" class="form-control" placeholder="{{t('Search')}}" aria-describedby="sizing-addon2" name="q">
                                     <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="cv cvicon-cv-video-file"></i>&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>/
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-video-camera" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+                                        <span class="caret"></span></button>/
                                         <ul class="dropdown-menu">
                                             <li><a href="#"><i class="cv cvicon-cv-relevant"></i> Relevant</a></li>
                                             <li><a href="#"><i class="cv cvicon-cv-calender"></i> Recent</a></li>
@@ -47,10 +49,8 @@
                             <div class="btn-group pull-right dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{ user.getFullname() }}<span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/channels/edit/{{ user.channel.uniqid }}">{{ t('Edit channel') }}</a></li>
                                     <li><a href="/users/profile">{{ t('Edit Profile') }}</a></li>
                                     <li><a href="/users/avatar">{{ t('Edit avatar') }}</a></li>
-                                    <li><a href="/channels/{{ user.channel.slug }}">{{ t('Your channel') }}</a></li>
                                     <li><a href="/users/changepassword">{{ t('Change password') }}</a></li>
                                     <li><a href="/logout">{{ t('Logout') }}</a></li>
                                 </ul>
@@ -68,7 +68,7 @@
                                 <div class="btn-group pull-right dropdown">
                                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{ t('Hello') }}<span class="caret"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="/login">{{ t('Login') }}</a></li>
+                                        <li><a href="/login?redirect={{redirect}}">{{ t('Login') }}</a></li>
                                         <li><a href="/signup">{{ t('Sign up') }}</a></li>
                                     </ul>
                                 </div>
