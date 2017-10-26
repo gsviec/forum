@@ -480,12 +480,12 @@ div#sticky-progress {
     margin-right: auto;
     float:none;
 }
-
 #header {
     margin-bottom: 50px;
 }
 .logo {
-    max-width: 100%;
+    /*max-width: 100%;*/
+    width: 44px;
 }
 #header .col-lg-3, #header .col-lg-6 {
     padding-top: 22px;
@@ -544,8 +544,9 @@ div#sticky-progress {
     width: 100%;
     text-align: left;
     font: 700 16px sans-serif;
-    padding: 55px 50px;
+    padding: 45px 50px;
     margin-top: 80px;
+    min-height: 260px
 }
 .footer-left, .footer-center, .footer-right {
     width: 33.33%;
@@ -627,5 +628,37 @@ i.cv:hover, i.fa:hover {
     font-weight: 400;
     margin: 0;
 }
-.footer-left .logo { width: 44px; height: 44px;}
-.footer-distributed { min-height: 270px }
+.footer-left .logo {
+    width: 44px;
+    height: 44px;
+}
+@media screen and (min-width: 120px) and (max-width: 755px) {
+    .navbar-brand {
+        padding: 12px 0;
+    }
+    .sub-header img {
+        padding-top: 14px;
+        width: 44px;
+    }
+    .footer-left, .footer-center, .footer-right {
+        width: 100%;
+        float: inherit;
+        text-align: center !important;
+    }
+
+    .footer-distributed h3 {
+        color: #fff;
+        font: 400 36px Cookie,cursive;
+        margin: 0;
+    }
+    .footer-distributed .footer-links a {
+        font-size: 14px;
+        padding: 0 5px;
+    }
+    .footer-distributed .fa-phone {
+        margin-left: -37px;
+    }
+    .footer-distributed .fa-envelope {
+        margin-left: -13px;
+    }
+}

@@ -49,6 +49,7 @@
                             <div class="btn-group pull-right dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{ user.getFullname() }}<span class="caret"></span></button>
                                 <ul class="dropdown-menu">
+                                    <li><a href="/post/discussion">{{ t('Start a Discussion') }}</a></li>
                                     <li><a href="/users/profile">{{ t('Edit Profile') }}</a></li>
                                     <li><a href="/users/avatar">{{ t('Edit avatar') }}</a></li>
                                     <li><a href="/users/changepassword">{{ t('Change password') }}</a></li>
