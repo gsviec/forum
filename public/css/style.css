@@ -512,7 +512,7 @@ div#sticky-progress {
     border: none;
     font-size: 16px;
     color: #637076;
-    padding: 26px 0 0 20px;
+    padding: 26px 0 0 0px;
 }
 .sub-header img {
     padding-top: 10px;
@@ -582,6 +582,9 @@ div#sticky-progress {
 }
 i.cv:hover, i.fa:hover {
     color: #ea2c5a !important;
+}
+.btn-group .btn .caret {
+    margin-left: 5px;
 }
 .footer-distributed .footer-center i {
     background-color: #33383b;
