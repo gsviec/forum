@@ -662,3 +662,7 @@ i.cv:hover, i.fa:hover {
         margin-left: -13px;
     }
 }
+.avatar-user {
+    border-radius: 50%;
+    margin: 12px;
+}

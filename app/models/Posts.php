@@ -239,16 +239,14 @@ class Posts extends Model
      */
     public function getRecentUsers()
     {
-        $users  = []; //array($this->user->id => array($this->user->username, $this->user->email));
-        foreach ($this->getReplies(['order' => 'created_at DESC', 'limit' => 3]) as $reply) {
-            if (isset($reply->user->id)) {
-               
-             
-            }
-
-             $users[] = array($reply->user->username,
+        $users  = array($this->user->id => array($this->user->username, $this->getUrlAvatar($this->user->email)));
+        foreach ($this->getReplies(['order' => 'created_at DESC', 'limit' => 2]) as $reply) {
+            //var_dump($reply->user->id);
+            //var_dump(!isset($reply->user->id));
+            if (!isset($users[$reply->user->id])) {
+             $users[$reply->user->id] = array($reply->user->username,
                  $this->getUrlAvatar($reply->user->email));
-        
+            }
         
         }
         //d($users);

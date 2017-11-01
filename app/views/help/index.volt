@@ -2,7 +2,7 @@
 <div class="container help">
 
 	<ol class="breadcrumb">
-		<li>{{ link_to('', 'Home') }}</a></li>
+		<li>{{ link_to('/discussions', 'Home') }}</a></li>
 	</ol>
 
 	<h1>Help</h1>

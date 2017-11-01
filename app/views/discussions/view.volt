@@ -46,7 +46,7 @@
 <div class="container">
 
 	<ol class="breadcrumb">
-		<li>{{ link_to('', t('Home')) }}</li>
+		<li>{{ link_to('/discussions', t('Home')) }}</li>
 		<li>{{ link_to('category/' ~ post.category.id ~ '/' ~ post.category.slug, t(post.category.name)) }}</li>
 	</ol>
 
