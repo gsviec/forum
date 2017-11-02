@@ -10,7 +10,25 @@
                         <ul class="list-inline menu">
                             <li><a class="active" href="/blog" target="_blank">{{ t('Blog') }}</a></li>
                             <li><a href="/">{{ t('Video') }}</a></li>
-                            <li><a href="/playlist">{{ t('Series') }}</a></li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle categories-link" data-toggle="dropdown" id="dropdownCategories" role="button" aria-haspopup="true" aria-expanded="false" title="Categories">
+                                    {{t('Category')}}<span class="octicon octicon-list-unordered"></span> <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu categories-dropdown" aria-labelledby="dropdownCategories">
+                                    {%- if categories is defined -%}
+                                            {%- for category in categories -%}
+                                            <li>
+                                                {{-
+                                                    link_to('category/' ~ category.id ~ '/' ~ category.slug,
+                                                        '<span class="label label-default pull-right">' ~ category.number_posts ~ '</span>' ~ category.name)
+                                                -}}
+                                            </li>
+                                            {%- endfor -%}
+                                        {%- endif -%}
+
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                     <div class="visible-xs visible-sm clearfix"></div>

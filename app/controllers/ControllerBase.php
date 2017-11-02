@@ -4,7 +4,7 @@ namespace Phosphorum\Controllers;
 
 use Phosphorum\Models\Posts;
 use Phosphorum\Models\Users;
-
+use Phosphorum\Models\Categories;
 class ControllerBase extends \Phalcon\Mvc\Controller
 {
 
@@ -42,6 +42,7 @@ class ControllerBase extends \Phalcon\Mvc\Controller
                 $this->session->set('identity-moderator', $auth['moderator']);
 
             }
+            $this->view->categories = Categories::find();
             $this->view->redirect = urlencode('https://gsviec.com' . $this->router->getRewriteUri());
     }
 

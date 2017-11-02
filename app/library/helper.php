@@ -18,11 +18,11 @@ if (!function_exists('d')) {
     }
 }
 
- function getUrlAvatar($email, $s = 32, $d = 'identicon', $r = 'pg')
-    {
+function getUrlAvatar($email, $s = 32, $d = 'identicon', $r = 'pg')
+{
 
-        $url = 'https://www.gravatar.com/avatar/';
-        $url .= md5(strtolower(trim($email)));
-        $url .= "?s={$s}&d={$d}&r={$r}";
-        return $url;
-    }
+    $url = 'https://www.gravatar.com/avatar/';
+    $url .= md5(strtolower(trim($email)));
+    $url .= "?s={$s}&d={$d}&r={$r}";
+    return $url;
+}
