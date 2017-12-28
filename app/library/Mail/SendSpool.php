@@ -65,7 +65,7 @@ class SendSpool extends Injectable
 
                 try {
 
-                    $message = new \Swift_Message('[Phalcon Forum] ' . $post->title);
+                    $message = new \Swift_Message('[Gsviec Forum] ' . $post->title);
                     $message->setTo(array($user->email => $user->name));
                     $message->addReplyTo('reply-i' . $post->id . '-' . time() . '@phosphorum.com');
 
